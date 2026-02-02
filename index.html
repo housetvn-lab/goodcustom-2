@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <title>goodcustom</title>
+    
+
+  </head>
+    
+  <body>
+  <!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>GOOD CUSTOM | Premium Steering & Bodykit</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <script src="https://unpkg.com/scrollreveal"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Montserrat:wght@700;900&family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap');
+        
+        :root {
+            --brand-green: #065f46; 
+            --brand-green-light: #10b981;
+            --brand-black: #050505;
+            --accent-glow: rgba(6, 95, 70, 0.15);
+        }
+
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            background-color: var(--brand-black);
+            background-image: 
+                radial-gradient(circle at 10% 20%, var(--accent-glow) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(16, 185, 129, 0.05) 0%, transparent 40%),
+                url('https://www.transparenttextures.com/patterns/carbon-fibre.png');
+            color: #fff;
+            -webkit-tap-highlight-color: transparent;
+            word-break: keep-all;
+            overflow-x: hidden;
+        }
+
+        .font-speed { font-family: 'Orbitron', sans-serif; font-style: italic; }
+        .font-mont { font-family: 'Montserrat', sans-serif; }
+
+        .glass-header {
+            background: rgba(5, 5, 5, 0.7);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .text-reveal {
+            background: linear-gradient(to bottom, #fff 30%, rgba(255,255,255,0.2));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .premium-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255,255,255,0.05);
+            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .premium-card:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: var(--brand-green);
+        }
+
+        .step-number {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 4rem;
+            line-height: 1;
+            font-weight: 900;
+            opacity: 0.1;
+            position: absolute;
+            right: 20px;
+            top: 20px;
+        }
+
+        .btn-glow {
+            box-shadow: 0 0 20px rgba(6, 95, 70, 0);
+            transition: all 0.4s ease;
+        }
+        .btn-glow:hover {
+            box-shadow: 0 0 30px rgba(16, 185, 129, 0.4);
+            transform: scale(1.05);
+        }
+
+        .admin-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            z-index: 40;
+            background: var(--brand-green);
+            padding: 6px 12px;
+            border-radius: 4px;
+            font-size: 10px;
+            font-weight: 900;
+            opacity: 0;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+        .premium-card:hover .admin-badge { opacity: 1; }
+
+        #galleryModal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 1000;
+            background: rgba(0,0,0,0.98);
+            backdrop-filter: blur(20px);
+        }
+
+        .swiper-nav-btn {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .swiper-nav-btn:hover {
+            background: var(--brand-green);
+            border-color: var(--brand-green);
+        }
+        .swiper-pagination-bullet { background: #fff !important; opacity: 0.2; }
+        .swiper-pagination-bullet-active { background: var(--brand-green-light) !important; opacity: 1; }
+
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-thumb { background: #333; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--brand-green); }
+
+        html { scroll-behavior: smooth; }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-[100] glass-header">
+        <div class="max-w-[1600px] mx-auto px-6 lg:px-12 flex justify-between items-center h-24">
+            <a href="#home" class="flex items-center space-x-3 group">
+                <span class="text-2xl font-speed font-black tracking-tighter uppercase">Good<span class="text-emerald-500">Custom</span></span>
+            </a>
+            
+            <div class="hidden lg:flex space-x-12 text-[10px] font-bold tracking-[0.4em] uppercase text-zinc-500">
+                <a href="#home" class="hover:text-white transition-colors">Home</a>
+                <a href="#portfolio" class="hover:text-white transition-colors text-emerald-500">Portfolio</a>
+                <a href="#process" class="hover:text-white transition-colors">Process</a>
+                <a href="#contact" class="hover:text-white transition-colors">Contact</a>
+            </div>
+
+            <div class="flex items-center gap-4">
+                <div class="hidden sm:flex flex-col text-right mr-4 border-r border-white/10 pr-4">
+                    <span class="text-[9px] text-zinc-500 font-bold uppercase tracking-widest">Customer Service</span>
+                    <a href="tel:01058582233" class="text-xs font-speed font-bold">010.5858.2233</a>
+                </div>
+                <a href="tel:01055888883" class="btn-glow bg-emerald-700 text-white px-6 py-3 rounded-full font-black text-[11px] tracking-widest uppercase">
+                    상담 예약
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative min-h-screen flex items-center justify-center overflow-hidden pt-24">
+        <div class="absolute inset-0 z-0">
+            <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black z-10"></div>
+            <img src="https://images.unsplash.com/photo-1555215695-3004980ad54e?auto=format&fit=crop&w=1920&q=80" class="w-full h-full object-cover opacity-30 scale-105">
+        </div>
+
+        <div class="relative z-20 text-center px-6">
+            <span class="reveal font-speed text-emerald-500 tracking-[0.6em] text-xs md:text-sm mb-8 block uppercase">BEYOND THE STANDARD</span>
+            <h1 class="reveal text-7xl md:text-[160px] font-black font-mont leading-[0.8] tracking-tighter italic uppercase mb-12">
+                Pure<br><span class="text-reveal">Innovation.</span>
+            </h1>
+            <p class="reveal text-zinc-400 text-lg md:text-2xl font-light max-w-3xl mx-auto leading-relaxed mb-16">
+                메르세데스 핸들 커스텀 & 바디킷 레트로핏의 절대 기준.<br>
+                안산 굿커스텀에서 전국 최저가로 압도적인 퀄리티를 경험하세요.
+            </p>
+            <div class="reveal flex flex-col md:flex-row justify-center gap-4">
+                <a href="tel:01058582233" class="btn-glow bg-white text-black px-10 py-5 rounded-xl font-black text-xs tracking-widest uppercase flex items-center justify-center gap-2">
+                    <i class="fas fa-phone-alt"></i> 010.5858.2233
+                </a>
+                <a href="tel:01055888883" class="btn-glow border border-white/20 px-10 py-5 rounded-xl font-black text-xs tracking-widest uppercase hover:bg-white/5 transition-colors flex items-center justify-center gap-2">
+                    <i class="fas fa-phone-alt"></i> 010.5588.8883
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="py-40 px-6 lg:px-12 max-w-[1600px] mx-auto space-y-40">
+        
+        <div class="reveal mb-10">
+            <span class="font-speed text-emerald-500 tracking-[0.5em] text-xs mb-4 block uppercase">Our Expertise</span>
+            <h2 class="font-speed text-5xl md:text-8xl font-black italic tracking-tighter uppercase">Portfolio</h2>
+            <div class="h-1 w-40 bg-emerald-700 mt-6"></div>
+        </div>
+
+        <!-- 01 Steering -->
+        <div class="reveal">
+            <div class="flex items-center justify-between mb-12">
+                <h3 class="font-speed text-2xl md:text-4xl font-bold italic uppercase"><span class="text-emerald-500 mr-4">01</span>Steering Custom</h3>
+                <div class="flex gap-4">
+                    <div class="swiper-prev-1 swiper-nav-btn"><i class="fas fa-chevron-left"></i></div>
+                    <div class="swiper-next-1 swiper-nav-btn"><i class="fas fa-chevron-right"></i></div>
+                </div>
+            </div>
+            <div class="swiper s1">
+                <div class="swiper-wrapper" id="grid-steering"></div>
+                <div class="swiper-pagination !static mt-10"></div>
+            </div>
+        </div>
+
+        <!-- 02 Carbon -->
+        <div class="reveal">
+            <div class="flex items-center justify-between mb-12">
+                <h3 class="font-speed text-2xl md:text-4xl font-bold italic uppercase"><span class="text-emerald-500 mr-4">02</span>Carbon Parts</h3>
+                <div class="flex gap-4">
+                    <div class="swiper-prev-2 swiper-nav-btn"><i class="fas fa-chevron-left"></i></div>
+                    <div class="swiper-next-2 swiper-nav-btn"><i class="fas fa-chevron-right"></i></div>
+                </div>
+            </div>
+            <div class="swiper s2">
+                <div class="swiper-wrapper" id="grid-carbon"></div>
+                <div class="swiper-pagination !static mt-10"></div>
+            </div>
+        </div>
+
+        <!-- 03 Retrofit -->
+        <div class="reveal">
+            <div class="flex items-center justify-between mb-12">
+                <h3 class="font-speed text-2xl md:text-4xl font-bold italic uppercase"><span class="text-emerald-500 mr-4">03</span>Custom Retrofit</h3>
+                <div class="flex gap-4">
+                    <div class="swiper-prev-3 swiper-nav-btn"><i class="fas fa-chevron-left"></i></div>
+                    <div class="swiper-next-3 swiper-nav-btn"><i class="fas fa-chevron-right"></i></div>
+                </div>
+            </div>
+            <div class="swiper s3">
+                <div class="swiper-wrapper" id="grid-custom"></div>
+                <div class="swiper-pagination !static mt-10"></div>
+            </div>
+        </div>
+
+        <!-- 04 Wheels -->
+        <div class="reveal">
+            <div class="flex items-center justify-between mb-12">
+                <h3 class="font-speed text-2xl md:text-4xl font-bold italic uppercase"><span class="text-emerald-500 mr-4">04</span>Forged Wheels</h3>
+                <div class="flex gap-4">
+                    <div class="swiper-prev-4 swiper-nav-btn"><i class="fas fa-chevron-left"></i></div>
+                    <div class="swiper-next-4 swiper-nav-btn"><i class="fas fa-chevron-right"></i></div>
+                </div>
+            </div>
+            <div class="swiper s4">
+                <div class="swiper-wrapper" id="grid-wheels"></div>
+                <div class="swiper-pagination !static mt-10"></div>
+            </div>
+        </div>
+
+    </section>
+
+    <!-- Process Section -->
+    <section id="process" class="py-40 bg-zinc-950/50 relative overflow-hidden">
+        <div class="max-w-[1600px] mx-auto px-6 lg:px-12">
+            <div class="text-center mb-32">
+                <span class="reveal font-speed text-emerald-500 tracking-[0.5em] text-xs mb-4 block uppercase">Systematic Flow</span>
+                <h2 class="reveal text-5xl md:text-7xl font-black font-mont italic uppercase tracking-tighter">Work Process</h2>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="reveal premium-card p-10 rounded-3xl relative">
+                    <span class="step-number text-emerald-500">01</span>
+                    <h4 class="text-xl font-bold mb-6 text-emerald-500">견적 상담</h4>
+                    <p class="text-zinc-400 font-light leading-relaxed">차종과 원하시는 디자인을 토대로 상세한 견적을 안내드립니다.</p>
+                </div>
+                <div class="reveal premium-card p-10 rounded-3xl relative">
+                    <span class="step-number text-emerald-500">02</span>
+                    <h4 class="text-xl font-bold mb-6 text-emerald-500">디자인 확정</h4>
+                    <p class="text-zinc-400 font-light leading-relaxed">컬러, 재질, 부품 사양을 확정하고 전용 파츠를 준비합니다.</p>
+                </div>
+                <div class="reveal premium-card p-10 rounded-3xl relative">
+                    <span class="step-number text-emerald-500">03</span>
+                    <h4 class="text-xl font-bold mb-6 text-emerald-500">정밀 시공</h4>
+                    <p class="text-zinc-400 font-light leading-relaxed">숙련된 기술진이 직접 모든 공정을 완벽하게 수행합니다.</p>
+                </div>
+                <div class="reveal premium-card p-10 rounded-3xl relative">
+                    <span class="step-number text-emerald-500">04</span>
+                    <h4 class="text-xl font-bold mb-6 text-emerald-500">최종 검수</h4>
+                    <p class="text-zinc-400 font-light leading-relaxed">기능 작동 여부를 테스트한 후 오너님께 인도합니다.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact" class="py-40 bg-black border-t border-white/5">
+        <div class="max-w-[1600px] mx-auto px-6 lg:px-12 text-center">
+            <h2 class="reveal font-speed text-5xl md:text-[120px] font-black italic tracking-tighter uppercase mb-20">Drive<br><span class="text-emerald-600">Legendary.</span></h2>
+            <div class="reveal flex flex-col gap-10">
+                <div class="flex flex-col md:flex-row justify-center gap-10 md:gap-24">
+                    <div>
+                        <p class="text-zinc-500 text-[10px] tracking-[0.4em] uppercase mb-4">Manager Line 1</p>
+                        <a href="tel:01058582233" class="text-3xl md:text-5xl font-black text-white hover:text-emerald-500 transition-colors">010.5858.2233</a>
+                    </div>
+                    <div>
+                        <p class="text-zinc-500 text-[10px] tracking-[0.4em] uppercase mb-4">Manager Line 2</p>
+                        <a href="tel:01055888883" class="text-3xl md:text-5xl font-black text-emerald-500 hover:text-white transition-colors">010.5588.8883</a>
+                    </div>
+                </div>
+                <p class="text-zinc-400 tracking-[0.4em] uppercase text-xs pt-16">경기도 안산시 단원구 시화호수로841번길 8, 허브밸리 104, 105호</p>
+            </div>
+            <p class="mt-32 text-[9px] text-zinc-800 font-bold tracking-[0.8em] uppercase">© 2026 GOOD CUSTOM. MASTER CRAFTED IN ANSAN.</p>
+        </div>
+    </footer>
+
+    <!-- Gallery Modal -->
+    <div id="galleryModal">
+        <button onclick="closeGallery()" class="absolute top-10 right-10 z-[1100] text-white/50 hover:text-white transition-colors">
+            <i class="fas fa-times text-5xl font-light"></i>
+        </button>
+        <div class="h-full flex flex-col lg:flex-row">
+            <div class="flex-1 flex items-center justify-center p-6 lg:p-20 relative">
+                <img id="modalImg" src="" class="max-w-full max-h-[80vh] object-contain shadow-2xl rounded-lg">
+            </div>
+            <div class="w-full lg:w-[600px] bg-zinc-950 p-12 lg:p-24 flex flex-col justify-center border-l border-white/5">
+                <span id="modalTag" class="text-emerald-500 font-speed text-xs tracking-[0.5em] mb-8 block uppercase">Project Detail</span>
+                <h3 id="modalTitle" class="text-5xl md:text-7xl font-black font-mont italic uppercase tracking-tighter mb-10 leading-tight">Masterwork</h3>
+                <p id="modalDesc" class="text-zinc-400 text-lg font-light leading-relaxed mb-16 border-l border-emerald-700 pl-8"></p>
+                <div class="grid grid-cols-2 gap-4">
+                    <a href="tel:01058582233" class="btn-glow bg-emerald-700 text-white text-center py-5 rounded-xl font-bold text-[10px] tracking-widest uppercase">상담사 1 연결</a>
+                    <a href="tel:01055888883" class="btn-glow border border-emerald-700 text-white text-center py-5 rounded-xl font-bold text-[10px] tracking-widest uppercase">상담사 2 연결</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+        const portfolioData = {
+            steering: [
+                { id: 's1', tag: 'DRAGONFLY', title: 'Carbon Edition', desc: '벤츠 신형 잠자리 핸들 카본 이식.', img: 'https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?auto=format&fit=crop&w=800' },
+                { id: 's2', tag: 'LED', title: 'Performance LED', desc: 'RPM 인디케이터 적용 퍼포먼스 핸들.', img: 'https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=800' },
+                { id: 's3', tag: 'NAPPA', title: 'Bespoke Leather', desc: '최고급 나파가죽 수제작 커스텀.', img: 'https://images.unsplash.com/photo-1614200187524-dc4b892acf16?auto=format&fit=crop&w=800' }
+            ],
+            carbon: [
+                { id: 'c1', tag: 'EXTERIOR', title: 'Mirror Covers', desc: '리얼카본 사이드미러 정밀 장착.', img: 'https://images.unsplash.com/photo-1553440569-bcc63803a83d?auto=format&fit=crop&w=800' },
+                { id: 'c2', tag: 'INTERIOR', title: 'Console Trim', desc: '실내 센터콘솔 카본 트림 시공.', img: 'https://images.unsplash.com/photo-1583121274602-3e2820c69888?auto=format&fit=crop&w=800' }
+            ],
+            custom: [
+                { id: 'r1', tag: 'CONVERSION', title: 'Maybach Look', desc: 'S클래스 마이바흐 룩 완벽 컨버전.', img: 'https://images.unsplash.com/photo-1621359953476-b1645f0d3859?auto=format&fit=crop&w=800' },
+                { id: 'r2', tag: 'LIGHTING', title: 'Active Ambient', desc: '순정 연동 액티브 앰비언트 라이트.', img: 'https://images.unsplash.com/photo-1555215695-3004980ad54e?auto=format&fit=crop&w=800' }
+            ],
+            wheels: [
+                { id: 'w1', tag: 'FORGED', title: '22" Monoblock', desc: '초경량 단조휠 세팅 및 밸런싱.', img: 'https://images.unsplash.com/photo-1551522435-a13afa10f103?auto=format&fit=crop&w=800' },
+                { id: 'w2', tag: 'CUSTOM', title: 'Gloss Black', desc: '블랙 유광 커스텀 도장 휠.', img: 'https://images.unsplash.com/photo-1580273916550-e323be2ae537?auto=format&fit=crop&w=800' }
+            ]
+        };
+
+        function createSlide(item) {
+            const savedImg = localStorage.getItem(`gc_img_${item.id}`) || item.img;
+            return `
+                <div class="swiper-slide h-auto">
+                    <div class="premium-card group cursor-pointer relative rounded-3xl overflow-hidden aspect-[4/5]" onclick="openGallery('${item.id}', '${item.img}', '${item.tag}', '${item.title}', '${item.desc}')">
+                        <label class="admin-badge" onclick="event.stopPropagation()">
+                            <i class="fas fa-camera mr-2"></i>REPLACE
+                            <input type="file" class="hidden" accept="image/*" onchange="handleImageUpload(event, '${item.id}')">
+                        </label>
+                        <img id="display-${item.id}" src="${savedImg}" class="w-full h-full object-cover transition-all duration-[2s] group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-90"></div>
+                        <div class="absolute bottom-8 left-8">
+                            <span class="font-speed text-emerald-500 text-[9px] tracking-[0.4em] mb-2 block uppercase">${item.tag}</span>
+                            <h3 class="text-3xl font-black font-mont italic uppercase tracking-tighter text-white">${item.title}</h3>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function handleImageUpload(event, id) {
+            const file = event.target.files[0];
+            if (!file) return;
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                const url = e.target.result;
+                document.getElementById(`display-${id}`).src = url;
+                localStorage.setItem(`gc_img_${id}`, url);
+            };
+            reader.readAsDataURL(file);
+        }
+
+        function openGallery(id, defaultImg, tag, title, desc) {
+            const saved = localStorage.getItem(`gc_img_${id}`) || defaultImg;
+            document.getElementById('modalImg').src = saved;
+            document.getElementById('modalTag').innerText = tag;
+            document.getElementById('modalTitle').innerText = title;
+            document.getElementById('modalDesc').innerText = desc;
+            document.getElementById('galleryModal').style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeGallery() {
+            document.getElementById('galleryModal').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        window.onload = () => {
+            document.getElementById('grid-steering').innerHTML = portfolioData.steering.map(createSlide).join('');
+            document.getElementById('grid-carbon').innerHTML = portfolioData.carbon.map(createSlide).join('');
+            document.getElementById('grid-custom').innerHTML = portfolioData.custom.map(createSlide).join('');
+            document.getElementById('grid-wheels').innerHTML = portfolioData.wheels.map(createSlide).join('');
+
+            const commonOptions = {
+                slidesPerView: 1.2,
+                spaceBetween: 20,
+                pagination: { el: '.swiper-pagination', clickable: true },
+                breakpoints: {
+                    640: { slidesPerView: 2.2 },
+                    1024: { slidesPerView: 3 }
+                }
+            };
+
+            new Swiper('.s1', { ...commonOptions, navigation: { nextEl: '.swiper-next-1', prevEl: '.swiper-prev-1' } });
+            new Swiper('.s2', { ...commonOptions, navigation: { nextEl: '.swiper-next-2', prevEl: '.swiper-prev-2' } });
+            new Swiper('.s3', { ...commonOptions, navigation: { nextEl: '.swiper-next-3', prevEl: '.swiper-prev-3' } });
+            new Swiper('.s4', { ...commonOptions, navigation: { nextEl: '.swiper-next-4', prevEl: '.swiper-prev-4' } });
+
+            ScrollReveal().reveal('.reveal', { 
+                delay: 200, distance: '50px', duration: 1200, origin: 'bottom', interval: 100, easing: 'cubic-bezier(0.16, 1, 0.3, 1)' 
+            });
+        };
+    </script>
+</body>
+</html>
+    
+  </body>
+  
+</html>
