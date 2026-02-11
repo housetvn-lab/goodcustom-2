@@ -330,9 +330,6 @@
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script>
-        /**
-         * 1. 데이터 정의 (id, tag, title, desc, img)
-         */
         const portfolioData = {
             steering: [
                 { id: 's1', tag: 'DRAGONFLY', title: 'Carbon Edition', desc: '벤츠 신형 잠자리 핸들 카본 이식.', img: '149- 핸들.jpg' },
@@ -352,11 +349,6 @@
             ]
         };
 
-        /**
-         * 2. 슬라이드 HTML 생성 함수
-         * - 여기서 onclick="openGallery(...)"를 선언하므로, 
-         * 데이터(item)가 들어오면 클릭 가능한 카드가 만들어집니다.
-         */
         function createSlide(item) {
             const savedImg = localStorage.getItem(`gc_img_${item.id}`) || item.img;
             return `
@@ -382,7 +374,6 @@
             `;
         }
 
-        // 이미지 수동 변경 (Local Storage 저장용)
         function handleImageUpload(event, id) {
             const file = event.target.files[0];
             if (!file) return;
@@ -395,9 +386,6 @@
             reader.readAsDataURL(file);
         }
 
-        /**
-         * 3. 갤러리 모달 열기 함수
-         */
         function openGallery(id, defaultImg, tag, title, desc) {
             const saved = localStorage.getItem(`gc_img_${id}`) || defaultImg;
             document.getElementById('modalImg').src = saved;
@@ -414,7 +402,6 @@
         }
 
         window.onload = () => {
-            // 각 섹션에 데이터 뿌리기
             document.getElementById('grid-steering').innerHTML = portfolioData.steering.map(createSlide).join('');
             document.getElementById('grid-carbon').innerHTML = portfolioData.carbon.map(createSlide).join('');
             document.getElementById('grid-custom').innerHTML = portfolioData.custom.map(createSlide).join('');
