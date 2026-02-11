@@ -331,8 +331,7 @@
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script>
         /**
-         * 깃허브 사진 연동 가이드:
-         * img 항목에 깃허브의 'Raw' 이미지 주소를 넣으시면 됩니다.
+         * 1. 데이터 정의 (id, tag, title, desc, img)
          */
         const portfolioData = {
             steering: [
@@ -349,21 +348,31 @@
                 { id: 'r2', tag: 'LIGHTING', title: 'Active Ambient', desc: '순정 연동 액티브 앰비언트 라이트.', img: '30.jpg' }
             ],
             wheels: [
-                { id: 'w1', tag: 'FORGED', title: '22" Monoblock', desc: '초경량 단조휠 세팅 및 밸런싱.', img: '글로스블랙휠1.jpg' },
+                { id: 'w1', tag: 'LUXURY', title: 'Maybach Wheel', desc: '초경량 단조휠 세팅 및 밸런싱.', img: '3.jpg' }
             ]
         };
 
+        /**
+         * 2. 슬라이드 HTML 생성 함수
+         * - 여기서 onclick="openGallery(...)"를 선언하므로, 
+         * 데이터(item)가 들어오면 클릭 가능한 카드가 만들어집니다.
+         */
         function createSlide(item) {
             const savedImg = localStorage.getItem(`gc_img_${item.id}`) || item.img;
             return `
                 <div class="swiper-slide h-auto">
-                    <div class="premium-card group cursor-pointer relative rounded-3xl overflow-hidden aspect-[4/5]" onclick="openGallery('${item.id}', '${item.img}', '${item.tag}', '${item.title}', '${item.desc}')">
+                    <div class="premium-card group cursor-pointer relative rounded-3xl overflow-hidden aspect-[4/5]" 
+                         onclick="openGallery('${item.id}', '${item.img}', '${item.tag}', '${item.title}', '${item.desc}')">
+                        
                         <label class="admin-badge" onclick="event.stopPropagation()">
                             <i class="fas fa-camera mr-2"></i>REPLACE
                             <input type="file" class="hidden" accept="image/*" onchange="handleImageUpload(event, '${item.id}')">
                         </label>
+
                         <img id="display-${item.id}" src="${savedImg}" class="w-full h-full object-cover transition-all duration-[2s] group-hover:scale-110">
+                        
                         <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-90"></div>
+                        
                         <div class="absolute bottom-8 left-8">
                             <span class="font-speed text-emerald-500 text-[9px] tracking-[0.4em] mb-2 block uppercase">${item.tag}</span>
                             <h3 class="text-3xl font-black font-mont italic uppercase tracking-tighter text-white">${item.title}</h3>
@@ -373,6 +382,7 @@
             `;
         }
 
+        // 이미지 수동 변경 (Local Storage 저장용)
         function handleImageUpload(event, id) {
             const file = event.target.files[0];
             if (!file) return;
@@ -385,6 +395,9 @@
             reader.readAsDataURL(file);
         }
 
+        /**
+         * 3. 갤러리 모달 열기 함수
+         */
         function openGallery(id, defaultImg, tag, title, desc) {
             const saved = localStorage.getItem(`gc_img_${id}`) || defaultImg;
             document.getElementById('modalImg').src = saved;
@@ -401,6 +414,7 @@
         }
 
         window.onload = () => {
+            // 각 섹션에 데이터 뿌리기
             document.getElementById('grid-steering').innerHTML = portfolioData.steering.map(createSlide).join('');
             document.getElementById('grid-carbon').innerHTML = portfolioData.carbon.map(createSlide).join('');
             document.getElementById('grid-custom').innerHTML = portfolioData.custom.map(createSlide).join('');
